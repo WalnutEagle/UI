@@ -1,40 +1,30 @@
-# ────────────────
+# ───────────────────────
 # 1) Build stage
-# ────────────────
+# ───────────────────────
 FROM node:18-alpine AS builder
 WORKDIR /app
 
-# Install deps
+# Install deps for build
 COPY package.json package-lock.json ./
 RUN npm ci
 
-# Copy source & build
+# Copy source and build
 COPY . .
 RUN npm run build
 
-# ────────────────
+# ───────────────────────
 # 2) Production stage
-# ────────────────
-FROM nginx:alpine
+# ───────────────────────
+FROM node:18-alpine
+WORKDIR /app
 
-# Remove default static files
-RUN rm -rf /usr/share/nginx/html/*
+# Copy only the built assets and prod deps
+COPY --from=builder /app/dist ./dist
+COPY package.json package-lock.json ./
+RUN npm ci --production
 
-# Ensure Nginx cache dirs exist and are group-writable
-RUN mkdir -p \
-      /var/cache/nginx/client_temp \
-      /var/cache/nginx/proxy_temp \
-      /var/cache/nginx/fastcgi_temp \
-      /var/cache/nginx/uwsgi_temp \
-      /var/cache/nginx/scgi_temp \
-  && chown -R 0:0 /var/cache/nginx \
-  && chmod -R g+w  /var/cache/nginx
-
-# Copy built assets
-COPY --from=builder /app/dist /usr/share/nginx/html
-
-# Expose the port OpenShift routes to
+# Expose the port your start script listens on
 EXPOSE 8080
 
-# Run Nginx in the foreground
-CMD ["nginx", "-g", "daemon off;"]
+# Start the static-server
+CMD ["serve", "-s", "dist", "-l", "8080"]
