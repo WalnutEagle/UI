@@ -1,5 +1,5 @@
 {
-  "name": "Autonomous Vehicle Dashboard UI",
-  "description": "A React and Tailwind CSS application to display a dashboard for an autonomous vehicle, showing system status, sensor data, camera feeds, and vehicle controls.",
+  "name": "Autonomous Vehicle Dashboard",
+  "description": "A React-based dashboard displaying simulated autonomous vehicle data, including system status, sensor outputs, energy consumption, camera feed, and vehicle controls. Designed with a dark theme using Tailwind CSS.",
   "requestFramePermissions": []
 }

@@ -1,27 +1,35 @@
 
-export enum InferenceMode {
-  LOCAL = "Local",
-  CLOUD = "Cloud",
-}
-
-export interface SensorData {
-  gps: string;
-  velocity: number; // km/h
-}
-
-export interface SystemInfo {
+export interface SystemStatusData {
   modelName: string;
-  gpuStatus: string;
-  serverCommTime: number; // ms
-  serverResponseTime: number; // ms
-  predictedWaypoints: string; // example: "[(10,5), (12,7)]"
+  gpu: string;
+  serverCommTime: number;
+  serverRespTime: number;
+  predictedWaypoints: string;
 }
 
-export interface InfoItemProps {
+export interface SensorOutputData {
+  gpsCoordinates: string;
+  velocity: number;
+}
+
+export interface CarEnergyConsumptionData {
+  currentOutput: number;
+}
+
+export interface GaugeProps {
   label: string;
-  value: string | number;
-  unit?: string;
-  highlight?: boolean;
-  valueClassName?: string;
+  value: number;
+  minValue?: number;
+  maxValue?: number;
+  unit: string;
+  size?: number;
+}
+
+export interface PanelProps {
+  title?: string;
+  titleColor?: string;
+  icon?: React.ReactNode;
+  children: React.ReactNode;
+  className?: string;
 }
     
