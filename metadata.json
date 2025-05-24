@@ -1,5 +1,0 @@
-{
-  "name": "Autonomous Vehicle Dashboard",
-  "description": "A React-based dashboard displaying simulated autonomous vehicle data, including system status, sensor outputs, energy consumption, camera feed, and vehicle controls. Designed with a dark theme using Tailwind CSS.",
-  "requestFramePermissions": []
-}
