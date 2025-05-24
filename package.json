@@ -1,0 +1,24 @@
+
+{
+  "name": "autonomous-vehicle-dashboard-ui",
+  "version": "1.0.0",
+  "description": "A React and Tailwind CSS application to display a dashboard for an autonomous vehicle.",
+  "scripts": {
+    "build": "esbuild index.tsx --bundle --outfile=dist/bundle.js --format=esm --platform=browser --loader:.tsx=tsx --loader:.ts=ts --jsx=automatic --external:react --external:\"react/*\" --external:\"react-dom/*\" --external:\"@heroicons/react/*\"",
+    "start": "npx serve",
+    "dev": "npx live-server --port=3000 --open=./index.html --no-browser"
+  },
+  "keywords": [
+    "react",
+    "typescript",
+    "tailwindcss",
+    "dashboard",
+    "autonomous vehicle"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "esbuild": "^0.23.0",
+    "live-server": "^1.2.2"
+  }
+}
