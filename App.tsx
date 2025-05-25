@@ -119,6 +119,11 @@ const App: React.FC = () => {
     setActiveCameraView(prev => prev === 'front_rgb' ? 'front_depth' : 'front_rgb');
   };
 
+  const handleQuit = () => {
+    console.log("Attempting to close window...");
+    window.close();
+  };
+
   // Image sources
   const frontRgbImageSrc = "https://picsum.photos/seed/mainfeed/800/450";
   const frontDepthImageSrc = "https://picsum.photos/seed/depthfeed/800/450?grayscale&blur=1"; 
@@ -171,7 +176,7 @@ const App: React.FC = () => {
           </DataDisplayCard>
           
           <StyledButton 
-            onClick={() => console.log("Quit button pressed")} 
+            onClick={handleQuit} 
             variant="danger"
             icon={<QuitIcon />}
           >
@@ -184,7 +189,7 @@ const App: React.FC = () => {
           <DataDisplayCard title="Operational Overview" className="flex-none">
             <div className="flex justify-between items-center">
                 <InfoPanelItem 
-                    label="Inference Mode " 
+                    label="Inference Mode" 
                     value={inferenceMode} 
                     valueClassName={inferenceMode === InferenceMode.CLOUD ? "text-purple-400" : "text-teal-400"}
                 />
