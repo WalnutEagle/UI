@@ -184,7 +184,7 @@ const App: React.FC = () => {
           <DataDisplayCard title="Operational Overview" className="flex-none">
             <div className="flex justify-between items-center">
                 <InfoPanelItem 
-                    label="Inference Mode" 
+                    label="Inference Mode " 
                     value={inferenceMode} 
                     valueClassName={inferenceMode === InferenceMode.CLOUD ? "text-purple-400" : "text-teal-400"}
                 />
