@@ -1,0 +1,1 @@
+npm install serve --save locally to generate the files and then upload to git
