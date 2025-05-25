@@ -26,5 +26,5 @@ RUN npm ci --production
 # Expose the port your start script listens on
 EXPOSE 8080
 
-# Start the static-server
-CMD ["serve", "-s", "dist", "-l", "8080"]
+# Use npx to run serve from local node_modules
+CMD ["npx", "serve", "-s", "dist", "-l", "8080"]
